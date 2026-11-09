@@ -1,1 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Killian L. Haecker — Mechanical Engineering student at the University of Nebraska–Lincoln. Engineering projects, technical interests, and internship opportunities.">
+  <title>Killian L. Haecker | Mechanical Engineering Portfolio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #123756;
+      --purple: #4f3674;
+      --gold: #d6a800;
+      --ink: #172b3d;
+      --muted: #526477;
+      --bg: #f5f7fb;
+      --white: #fff;
+      --border: #dce3ec;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+    }
+
+    body {
+      margin: 0;
+      font: 16px/1.65 "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    a {
+      color: #294c87;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    .skip {
+      position: absolute;
+      left: 1rem;
+      top: -5rem;
+      z-index: 100;
+      background: white;
+      padding: .7rem 1rem;
+    }
+
+    .skip:focus {
+      top: 1rem;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--navy);
+      color: white;
+      box-shadow: 0 3px 12px #001a3033;
+    }
+
+    .nav-wrap {
+      max-width: 1160px;
+      margin: auto;
+      padding: 1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      color: white;
+      text-decoration: none;
+      font-weight: 750;
+      letter-spacing: .02em;
+      font-size: 1.12rem;
+    }
+
+    .brand span {
+      color: #f4d35e;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid #ffffffaa;
+      border-radius: 7px;
+      color: white;
+      padding: .45rem .8rem;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: .3rem;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: white;
+      display: block;
+      padding: .55rem .75rem;
+      text-decoration: none;
+      border-radius: 7px;
+      font-weight: 600;
+      font-size: .93rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: #ffffff20;
+    }
+
+    .hero {
+      background: linear-gradient(115deg, #123756 0%, #4f3674 100%);
+      color: white;
+      padding: 6rem 1.4rem 6.5rem;
+    }
+
+    .hero-inner {
+      max-width: 1080px;
+      margin: auto;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: .82rem;
+      letter-spacing: .14em;
+      font-weight: 800;
+      color: #ffe080;
+    }
+
+    h1 {
+      font-size: clamp(2.35rem, 5.5vw, 4.2rem);
+      line-height: 1.12;
+      max-width: 800px;
+      margin: .8rem 0 1.3rem;
+    }
+
+    .hero p {
+      font-size: 1.18rem;
+      max-width: 720px;
+      color: #f0edf7;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .9rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: .83rem 1.35rem;
+      border-radius: 8px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform .15s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: #f1c84e;
+      color: #14293b;
+    }
+
+    .btn-secondary {
+      border: 2px solid white;
+      color: white;
+    }
+
+    main section:not(.hero) {
+      max-width: 1160px;
+      margin: auto;
+      padding: 4.4rem 1.4rem;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3vw, 2.25rem);
+      line-height: 1.2;
+      margin: 0 0 1rem;
+      color: var(--navy);
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 760px;
+      font-size: 1.08rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      box-shadow: 0 4px 16px #1237560c;
+    }
+
+    .card h3 {
+      margin: .5rem 0;
+      color: var(--purple);
+      font-size: 1.18rem;
+    }
+
+    .card p {
+      color: #44586b;
+      margin: .6rem 0 1rem;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 800;
+      color: #53376c;
+      background: #eee7f7;
+      padding: .25rem .6rem;
+      border-radius: 100px;
+    }
+
+    .card a {
+      font-weight: 700;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7rem;
+      padding: 0;
+      margin: 1.6rem 0 0;
+      list-style: none;
+    }
+
+    .skill-list li {
+      background: white;
+      border: 1px solid #cbd6e2;
+      padding: .5rem .85rem;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .note {
+      border-left: 5px solid var(--gold);
+      padding: 1rem 1.3rem;
+      background: #fff;
+      border-radius: 0 9px 9px 0;
+    }
+
+    .contact {
+      background: #e8eef5;
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .footer {
+      background: #0c2943;
+      color: #f4f7fb;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .footer a {
+      color: #ffe080;
+    }
+
+    @media(max-width:760px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-wrap {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding: .4rem 0;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: .8rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 4.4rem 1.4rem;
+      }
+    }
+
+    @media(min-width:761px) and (max-width:950px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .btn {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+  <header class="header">
+    <nav class="nav-wrap" aria-label="Main navigation">
+      <a class="brand" href="#home">KH <span>|</span> Mechanical Engineering</a>
+      <button class="menu-toggle" type="button" aria-controls="navigation-links" aria-expanded="false">☰ Menu</button>
+      <ul class="nav-links" id="navigation-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#skills">Technical Skills</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <div class="eyebrow">University of Nebraska–Lincoln · Mechanical Engineering Student</div>
+        <h1 id="hero-heading">Killian L. Haecker</h1>
+        <p>Aspiring mechanical engineer with an interest in aerospace, aviation, defense, and rocketry. Exploring
+          opportunities to apply engineering fundamentals, creative problem-solving, and hands-on learning to real-world
+          challenges.</p>
+        <div class="actions"><a class="btn btn-primary" href="#portfolio">Explore My Projects</a><a
+            class="btn btn-secondary" href="#contact">Get in Touch</a></div>
+      </div>
+    </section>
+    <section id="about" aria-labelledby="about-heading">
+      <div class="split">
+        <div>
+          <h2 id="about-heading">About Me</h2>
+          <p>I'm Killian L. Haecker, a junior studying Mechanical Engineering at the University of Nebraska–Lincoln. I'm
+            interested in understanding how mechanical systems are designed, analyzed, built, and improved.</p>
+          <p>I'm particularly interested in opportunities within aerospace, aviation, defense, and rocketry. This
+            website will highlight my coursework, engineering projects, technical capabilities, and professional growth
+            as I pursue internship opportunities.</p>
+        </div>
+        <aside class="note"><strong>Career objective</strong>
+          <p>Seeking a summer mechanical engineering internship where I can contribute to meaningful technical work,
+            learn from experienced engineers, and strengthen my practical engineering skills.</p>
+        </aside>
+      </div>
+    </section>
+    <section id="portfolio" aria-labelledby="portfolio-heading">
+      <h2 id="portfolio-heading">Engineering Portfolio</h2>
+      <p class="lead">A place to showcase academic projects, design challenges, and hands-on engineering experience.
+        Project details and supporting materials will be added as they become available.</p>
+      <div class="grid">
+        <article class="card"><span class="tag">Project Placeholder</span>
+          <h3>Mechanical Design Project</h3>
+          <p>Add a class or personal project demonstrating the design process, constraints, calculations, prototypes,
+            and final results.</p><a href="#contact">Project details coming soon</a>
+        </article>
+        <article class="card"><span class="tag">Project Placeholder</span>
+          <h3>Analysis &amp; Problem-Solving</h3>
+          <p>Feature an engineering analysis or team assignment with the problem statement, approach, tools used, and
+            measurable outcomes.</p><a href="#contact">Project details coming soon</a>
+        </article>
+        <article class="card"><span class="tag">Project Placeholder</span>
+          <h3>Hands-On Engineering</h3>
+          <p>Highlight a build, laboratory experiment, prototype, or extracurricular engineering activity with photos
+            and lessons learned.</p><a href="#contact">Project details coming soon</a>
+        </article>
+      </div>
+    </section>
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Technical Skills</h2>
+      <p class="lead">Engineering topics and potential technical skill categories. Update this section to reflect tools
+        and methods Killian has actually used.</p>
+      <ul class="skill-list">
+        <li>Engineering Design</li>
+        <li>Mechanical Systems</li>
+        <li>Engineering Mathematics</li>
+        <li>Physics &amp; Mechanics</li>
+        <li>Technical Problem-Solving</li>
+        <li>CAD Software — Confirm</li>
+        <li>Programming — Confirm</li>
+        <li>Prototyping — Confirm</li>
+        <li>Testing &amp; Analysis — Confirm</li>
+        <li>Technical Documentation</li>
+      </ul>
+    </section>
+    <section id="resume" aria-labelledby="resume-heading">
+      <h2 id="resume-heading">Resume &amp; Education</h2>
+      <p class="lead">Mechanical Engineering student at the University of Nebraska–Lincoln, seeking summer internship
+        opportunities.</p>
+      <div class="card">
+        <h3>Resume coming soon</h3>
+        <p>Add Killian's latest resume PDF here. This placeholder will be replaced with a working download link.</p>
+        <p><strong>Suggested file:</strong> <code>assets/Killian-Haecker-Resume.pdf</code></p>
+        <!-- Replace this placeholder with: <a href="assets/Killian-Haecker-Resume.pdf" download>Download Resume (PDF)</a> -->
+      </div>
+    </section>
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="contact">
+        <h2 id="contact-heading">Let's Connect</h2>
+        <p>Interested in discussing a mechanical engineering internship, engineering projects, or professional
+          opportunities? I'd welcome the chance to connect.</p>
+        <p><strong>Email:</strong> Add Killian's professional email address here</p>
+        <p><strong>LinkedIn:</strong> Add Killian's LinkedIn profile link here</p>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>© <span id="year">2026</span> Killian L. Haecker · Mechanical Engineering · University of Nebraska–Lincoln</p><a
+      href="#home">Back to top</a>
+  </footer>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const links = document.querySelector('#navigation-links');
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      links.classList.toggle('open', !isOpen);
+    });
+    links.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      links.classList.remove('open');
+    }));
+    document.querySelector('#year').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
